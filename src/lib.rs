@@ -19,6 +19,42 @@
 //!
 //! [`pkcs11`]: https://crates.io/crates/pkcs11
 //!
+//! # Examples
+//!
+//! ## Importing a key from the binary seed
+//!
+//! ```rust
+//!     use ehsm::*;
+//!     let lib_name = ehsm_library_name();
+//!     let ehsm = EHSMContext::new(lib_name.as_path())
+//!         .expect("Failed to load ehsm library functions");
+//!     let session = get_logged_in_session(&ctx, SU_PIN,0,None,None)
+//!         .expect("Failed to get session");
+//!     ehsm.import_bitcoin_key(session,
+//!                             &hex::decode("000102030405060708090a0b0c0d0e0f").unwrap())
+//!         .expect("Failed to import key");
+//! ```
+//!
+//! ## Retrieving a public key at the specified BIP32 path
+//!
+//! ```rust
+//! // empty index vector is the root key or "m"
+//! // for "m/0", just add 0 to indexes, i.e. indexes.push(0) etc. to build the BIP32 path
+//! let mut indexes: Vec<u32> = Vec::new();
+//! // main net
+//! let net: u32 = 0x0488B21Eu32;
+//! let xpub = ehsm.get_bitcoin_pub(session, &indexes, net).expect("Failed to get btc pub");
+//! ```
+//!
+//! ## Signing a hash with the private key at the specified BIP32 path
+//!
+//! ```rust
+//! // empty index vector is the root key or "m"
+//! // for "m/0", just add 0 to indexes, i.e. indexes.push(0) etc. to build the BIP32 path
+//! let mut indexes: Vec<u32> = Vec::new();
+//! let sig = ehsm.sign_bitcoin_hash(session,&vec![0;32],&indexes).expect("Failed to sign hash");
+//! ```
+
 #![allow(non_camel_case_types, non_snake_case, clippy::unreadable_literal)]
 
 extern crate pkcs11;

@@ -6,7 +6,7 @@ edition = "2018"
 description = "Rust integration library for libehsm"
 homepage = "https://github.com/ellipticSecure/ehsm-rust"
 repository = "https://github.com/ellipticSecure/ehsm-rust"
-keywords = ["pkcs11", "cryptoki", "btc"]
+keywords = ["pkcs11", "cryptoki", "btc", "bip32"]
 categories = ["cryptography", "hardware-support"]
 license-file = "LICENSE"
 
