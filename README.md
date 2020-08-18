@@ -1,5 +1,9 @@
 # This is a Rust library to interface with the [eHSM](https://ellipticsecure.com/products/ehsm_overview.html) and [MIRkey](https://ellipticsecure.com/products/mirkey_overview.html) Hardware Security Modules
 
+[![Latest version](https://img.shields.io/crates/v/ehsm.svg)](https://crates.io/crates/ehsm)
+[![Documentation](https://docs.rs/ehsm/badge.svg)](https://docs.rs/ehsm)
+![License](https://img.shields.io/crates/l/pkcs11.svg)
+
 # Example usage
 
 ```rust
